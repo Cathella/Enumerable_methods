@@ -32,8 +32,16 @@ module Enumerable
         result
     end
 
-    def my_any?
-        # your code here
+    def my_any?(arg = nil)
+        result = false
+        if arg
+            my_each { |obj| result = true if obj.is_a?(arg) }
+        elsif block_given?
+            my_each { |obj| result = true if yield(obj) }
+        else
+            my_each { |obj| result = true if obj }
+        end
+        result
     end
 
     def my_none?
