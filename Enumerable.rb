@@ -70,8 +70,19 @@ module Enumerable
         result
     end
 
-    def my_map
-        # your code here
+    def my_map()
+        return to_enum unless block_given?
+        arr = []
+        if proc.nil?
+            length.times do |i|
+                arr.push(yield(self[i]))
+            end
+        else
+            length.times do |i|
+                arr.push(proc.call(self[i]))
+            end
+        end
+        arr
     end
 
     def my_inject
