@@ -9,6 +9,11 @@ module Enumerable
 
     def my_each_with_index
         # your code here
+        return to_enum unless block_given?
+
+        length.times do |i|
+            yield(self[i], i)
+        end
     end
 
     def my_select
