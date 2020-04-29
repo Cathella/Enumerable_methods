@@ -22,7 +22,7 @@ module Enumerable
         arr
     end
 
-    def my_all?()
+    def my_all?
         result = true
         if block_given?
             my_each { |i| result = false unless yield(i) }
@@ -85,7 +85,24 @@ module Enumerable
         arr
     end
 
-    def my_inject
-        # your code here
+    def my_inject(arg1 = nil, arg2 = nil)
+        if block_given? && arg1
+            result = arg1
+            my_each do |i|
+                result = yield(result, i)
+            end 
+        elsif block_given? && !arg1
+            result = self[0]
+            my_each_with_index do |i, x|
+                result = yield(result, i) unless x.zero?
+            end
+        else
+            result = arg1
+            operation = arg2.to_proc
+            my_each do |i|
+                result = operation.call(result, i)
+            end
+        end 
+        result
     end
 end
