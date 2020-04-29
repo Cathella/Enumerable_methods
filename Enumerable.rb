@@ -105,4 +105,10 @@ module Enumerable
         end 
         result
     end
+
+    def multiply_els(arr)
+        arr.my_inject do |x, y|
+            x*y
+        end
+    end
 end
