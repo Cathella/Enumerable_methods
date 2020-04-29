@@ -25,9 +25,9 @@ module Enumerable
     def my_all?()
         result = true
         if block_given?
-            my_each { |obj| result = false unless yield(obj) }
+            my_each { |i| result = false unless yield(i) }
         else
-            my_each { |obj| result = false unless obj }
+            my_each { |i| result = false unless i }
         end 
         result
     end
@@ -35,17 +35,23 @@ module Enumerable
     def my_any?(arg = nil)
         result = false
         if arg
-            my_each { |obj| result = true if obj.is_a?(arg) }
+            my_each { |i| result = true if i.is_a?(arg) }
         elsif block_given?
-            my_each { |obj| result = true if yield(obj) }
+            my_each { |i| result = true if yield(i) }
         else
-            my_each { |obj| result = true if obj }
+            my_each { |i| result = true if i }
         end
         result
     end
 
     def my_none?
-        # your code here
+        result = true
+        if block_given?
+            my_each { |i| result = false if yield(i) }
+        else
+            my_each { |i| result = false if i }
+        end 
+        result
     end
 
     def my_count
