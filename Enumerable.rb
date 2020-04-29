@@ -54,8 +54,20 @@ module Enumerable
         result
     end
 
-    def my_count
-        # your code here
+    def my_count(arg = nil)
+        result = 0
+        if block_given?
+            my_each do |i|
+                result += 1 if yield(i)
+            end
+        elsif arg
+            my_each do |i|
+                result += 1 if i == arg
+            end
+        else
+            result = length
+        end 
+        result
     end
 
     def my_map
