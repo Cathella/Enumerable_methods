@@ -70,7 +70,7 @@ module Enumerable
         result
     end
 
-    def my_map()
+    def my_map(proc = nil)
         return to_enum unless block_given?
         arr = []
         if proc.nil?
