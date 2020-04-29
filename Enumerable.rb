@@ -1,6 +1,10 @@
 module Enumerable
     def my_each
-        # your code here
+        return to_enum unless block_given?
+
+        length.times do |i|
+            yield(self[i])
+        end
     end
 
     def my_each_with_index
@@ -11,15 +15,15 @@ module Enumerable
         # your code here
     end
 
-    def my_all
+    def my_all?
         # your code here
     end
 
-    def my_any
+    def my_any?
         # your code here
     end
 
-    def my_none
+    def my_none?
         # your code here
     end
 
