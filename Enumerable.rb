@@ -22,15 +22,14 @@ module Enumerable
         arr
     end
 
-    def my_all?(pattern = nil)
+    def my_all?()
+        result = true
         if block_given?
-            my_each { |obj| return false unless yield(obj) }
-        elsif pattern
-            my_each { |obj| return false unless pattern_match?(obj, pattern )}
+            my_each { |obj| result = false unless yield(obj) }
         else
-            my_each { |obj| return false unless obj }
+            my_each { |obj| result = false unless obj }
         end 
-        true
+        result
     end
 
     def my_any?
