@@ -1,6 +1,6 @@
 # Project 2: Enumerable Methods -- Ruby
 
-> This project implements enumerable methods in a different way than the usual but having the same output in Ruby. The project requires me to reproduce the following methods in other ways since in ruby a code implementation can be written in very many other ways. #my_each, #my_each_with_index, #my_select, #my_all?, #my_any?, #my_none?, #my_count, #my_map, #my_inject
+- This project implements enumerable methods in a different way than the usual but having the same output in Ruby. The project requires me to reproduce the following methods in other ways since in ruby a code implementation can be written in very many other ways. #my_each, #my_each_with_index, #my_select, #my_all?, #my_any?, #my_none?, #my_count, #my_map, #my_inject
 
 > The project's requirements can be found here: [Project: Enumerable Methods](https://github.com/TheOdinProject/curriculum/blob/master/ruby_programming/archive/basic_ruby/project_advanced_building_blocks.md#project-2-enumerable-methods)
 
