@@ -101,8 +101,8 @@ module Enumerable
     arr
   end
 
-  # rubocop:disable Metrics/PerceivedComplexity
   # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
   def my_inject(arg = nil, arg2 = nil)
     result = is_a?(Range) ? min : self[0]
     if arg2.is_a?(Symbol) || arg2.is_a?(String)
