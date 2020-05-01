@@ -1,6 +1,7 @@
 module Enumerable
     def my_each
       return to_enum unless block_given?
+
       length.times do |i|
         yield(self[i])
       end
@@ -8,6 +9,7 @@ module Enumerable
 
     def my_each_with_index
       return to_enum unless block_given?
+
       length.times do |i|
         yield(self[i], i)
       end
@@ -15,6 +17,7 @@ module Enumerable
 
     def my_select
       return to_enum unless block_given?
+      
       arr = []
       length.times do |i|
         arr.push(self[i]) if yield(self[i])
