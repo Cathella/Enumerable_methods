@@ -25,6 +25,7 @@ module Enumerable
     arr
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   def my_all?(arg = nil)
     result = true
     my_each do |i|
@@ -43,7 +44,9 @@ module Enumerable
     end
     result
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   def my_any?(arg = nil, &block)
     result = false
     my_each do |i|
@@ -60,6 +63,7 @@ module Enumerable
     end
     result
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   def my_none?(arg = nil, &block)
     !my_any?(arg, &block)
@@ -97,6 +101,7 @@ module Enumerable
     arr
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   def my_inject(arg = nil, arg2 = nil)
     result = is_a?(Range) ? min : self[0]
     if arg2.is_a?(Symbol) || arg2.is_a?(String)
@@ -110,6 +115,7 @@ module Enumerable
     end
     result
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   def multiply_els(arr)
     arr.my_inject do |x, y|
