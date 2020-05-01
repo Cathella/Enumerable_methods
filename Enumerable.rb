@@ -17,7 +17,7 @@ module Enumerable
 
   def my_select
     return to_enum unless block_given?
-      
+
     arr = []
     length.times do |i|
       arr.push(self[i]) if yield(self[i])
@@ -77,12 +77,13 @@ module Enumerable
       end
     else
       result = length
-    end 
+    end
     result
   end
 
   def my_map(proc = nil)
     return to_enum unless block_given?
+
     arr = []
     if proc.nil?
       length.times do |i|
@@ -112,7 +113,7 @@ module Enumerable
 
   def multiply_els(arr)
     arr.my_inject do |x, y|
-      x*y
+      x * y
     end
   end
 end
