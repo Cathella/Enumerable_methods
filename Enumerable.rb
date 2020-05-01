@@ -26,6 +26,7 @@ module Enumerable
   end
 
   # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
   def my_all?(arg = nil)
     result = true
     my_each do |i|
@@ -45,8 +46,10 @@ module Enumerable
     result
   end
   # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/PerceivedComplexity
 
   # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
   def my_any?(arg = nil, &block)
     result = false
     my_each do |i|
@@ -64,6 +67,7 @@ module Enumerable
     result
   end
   # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/PerceivedComplexity
 
   def my_none?(arg = nil, &block)
     !my_any?(arg, &block)
