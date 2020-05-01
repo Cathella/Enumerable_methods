@@ -101,6 +101,7 @@ module Enumerable
     arr
   end
 
+  # rubocop:disable Metrics/PerceivedComplexity
   # rubocop:disable Metrics/CyclomaticComplexity
   def my_inject(arg = nil, arg2 = nil)
     result = is_a?(Range) ? min : self[0]
@@ -116,6 +117,7 @@ module Enumerable
     result
   end
   # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/PerceivedComplexity
 
   def multiply_els(arr)
     arr.my_inject do |x, y|
