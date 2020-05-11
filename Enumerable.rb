@@ -35,7 +35,7 @@ module Enumerable
           result = i.is_a?(arg) unless arg.is_a?(Regexp)
           result = !i.match(arg).nil? if arg.is_a?(Regexp)
         elsif arg
-          result = i == arg1
+          result = i == arg
         elsif block_given?
           result = false unless yield(i)
         else
@@ -105,23 +105,30 @@ module Enumerable
     arr
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity
-  # rubocop:disable Metrics/PerceivedComplexity
-  def my_inject(arg = nil, arg2 = nil)
-    result = is_a?(Range) ? min : self[0]
-    if arg2.is_a?(Symbol) || arg2.is_a?(String)
-      my_each_with_index { |element, i| result = result.send(arg2, element) if i.positive? }
-      result = result.send(arg2, arg)
-    elsif block_given?
-      my_each_with_index { |element, i| result = yield(result, element) if i.positive? }
-      result = yield(result, arg) if arg
-    elsif arg.is_a?(Symbol) || arg.is_a?(String)
-      my_each_with_index { |element, i| result = result.send(arg, element) if i.positive? }
+  def my_inject(arg = nil, symbol = nil)
+    arr = self.to_a
+    if arg && symbol
+      arr.my_each do |n|
+        arg = arg.send(symbol, n)
+      end
+    elsif arg && !block_given?
+      symbol = arg
+      arg = arr[0]
+      arr.drop(1).my_each do |n|
+        arg = arg.send(symbol, n)
+      end
+    elsif arg
+      arr.my_each do |n|
+        arg = yield(arg, n)
+      end
+    else
+      arg = arr[0]
+      arr.drop(1).my_each do |n|
+        arg = yield(arg, n)
+      end
+      arg
     end
-    result
   end
-  # rubocop:enable Metrics/CyclomaticComplexity
-  # rubocop:enable Metrics/PerceivedComplexity
 
   def multiply_els(arr)
     arr.my_inject do |x, y|
