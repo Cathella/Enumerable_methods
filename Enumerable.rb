@@ -108,26 +108,18 @@ module Enumerable
   def my_inject(arg = nil, symbol = nil)
     arr = self.to_a
     if arg && symbol
-      arr.my_each do |n|
-        arg = arg.send(symbol, n)
-      end
+      arr.my_each { |n| arg = arg.send(symbol, n) }
     elsif arg && !block_given?
       symbol = arg
       arg = arr[0]
-      arr.drop(1).my_each do |n|
-        arg = arg.send(symbol, n)
-      end
+      arr.drop(1).my_each { |n| arg = arg.send(symbol, n) }
     elsif arg
-      arr.my_each do |n|
-        arg = yield(arg, n)
-      end
+      arr.my_each { |n| arg = yield(arg, n) }
     else
       arg = arr[0]
-      arr.drop(1).my_each do |n|
-        arg = yield(arg, n)
-      end
-      arg
+      arr.drop(1).my_each { |n| arg = yield(arg, n) }
     end
+    arg
   end
 
   def multiply_els(arr)
@@ -135,4 +127,5 @@ module Enumerable
       x * y
     end
   end
+
 end
