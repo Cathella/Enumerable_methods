@@ -106,6 +106,7 @@ module Enumerable
   end
 
   def my_inject(arg = nil, symbol = nil)
+    arr = self.to_a
     if arg && symbol
       arr.my_each { |n| arg = arg.send(symbol, n) }
     elsif arg && !block_given?
