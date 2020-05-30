@@ -1,3 +1,5 @@
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Layout/LineLength
 module Enumerable
   def my_each
     return to_enum unless block_given?
@@ -128,3 +130,5 @@ module Enumerable
     end
   end
 end
+# rubocop: enable Metrics/MethodLength
+# rubocop: enable Layout/LineLength
